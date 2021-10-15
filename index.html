@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>AVAIG</title>
+  <meta charset="UTF-8" />
+  <script src="aframe-master.min.js"></script>
+  <script src="aframe-event-set-component.min.js"></script>
+
+</head>
+<audio id="flecha" src="voz/flecha.mp3"></audio>
+<audio id="flecha2" src="voz/flecha2.mp3"></audio>
+<audio id="punto" src="voz/punto.mp3"></audio>
+
+<body>
+
+  <iframe src="voz/silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
+  <audio id="player" autoplay>
+    <source src="voz/inicio.mp3" type="audio/mp3">
+  </audio>
+
+  <a-scene>
+    <a-assets>
+      <img id="tr" src="img/tr.png" />
+      <img id="img1" src="img/lobby.jpg" />
+      <img id="info" src="img/inf.png" />
+
+    </a-assets>
+
+    <a-image src="#tr" alt="MDN" width="2.3" height="2.3" position="-0.3 -0.6 -9" rotation="-60 0 0"
+    onclick="sonido('flecha')"></a-image>
+
+    <a-image src="#tr" alt="MDN" width="2" height="2" position="0 2 5" rotation="35 180 0"
+    onclick="sonido('flecha2')"></a-image>
+
+    <a-text value="Apunta a los objetos para saber que hacen" color="#BBB" position="-3.4 0.2 -3" rotation="0 -3.4 0" scale="1.5 1.5 1.5">
+    </a-text>
+
+    <a-image src="#info" alt="MDN" width="1.2" height="1.2" position="0 5.7 -10" rotation="0 0 0"
+      onclick="sonido('punto')"
+      event-set__enter="_event: mouseenter; _target: #TextInfo; visible: true; scale: 3 3 3"
+      event-set__leave="_event: mouseleave; _target: #TextInfo; visible: false; scale: 0 0 0">
+
+      <a-text id="TextInfo" value="sobre el objeto" align="center" color="#FFFF00" scale="0 0 0" visible="false"
+        position="0 -1 0" rotation="0 0 0" material="color: #333"></a-text>
+    </a-image>
+
+    <a-text value="IR AL RECORRIDO!" color="#BBB" position="0 8 5" rotation="35 180 0" align="center" scale="1.5 1.5 1.5" geometry="primitive: plane; width: 3" material="color: #333"
+    onclick="imageClick('VR/CIITIC/general/inicio.html')">    </a-text>
+
+    <a-sky src="#img1" id="sky" rotation="0 0 0" onclick ="sonidoof()"></a-sky>
+
+    <a-camera>
+      <a-cursor fuse="true"></a-cursor>
+    </a-camera>
+
+  </a-scene>
+
+  <script>
+    function imageClick(url) {
+      window.location = url;
+    }
+
+    function sonido(aud) {
+      var sonido_info = document.getElementById(aud);
+      sonido_info.play();
+      audof = aud;
+    }
+
+    function sonidoof() {
+      var sonido_info = document.getElementById(audof);
+      sonido_info.pause();
+    }
+
+  </script>
+
+</body>
+
+</html>
