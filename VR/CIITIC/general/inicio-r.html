@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>AVAIG</title>
+  <meta charset="UTF-8" />
+  <script src="../../../aframe-master.min.js"></script>
+
+</head>
+
+<body>
+  <a-scene auto-enter-vr>
+    <a-assets>
+      <img id="tr" src="../../../img/tr.png" />
+      <img id="img1" src="../../../img/1.jpg" />
+      <img id="info" src="../../../img/inf.png" />
+      <img id="focus" src="../../../img/focus.png" />
+
+    </a-assets>
+
+    <a-image src="#tr" alt="MDN" width="2" height="2" position="-5 -0.5 -10" rotation="-50 10 0"
+      onclick="imageClick('1.html')"></a-image>
+    <a-image src="#focus" alt="MDN" width="30" height="20" position="0 1.5 12" rotation="0 0 0"></a-image>
+    <a-text value="Elige en que punto iniciar tu recorrido" color="#BBB" position="2.8 3.7 3" rotation="0 180 0" scale="1.5 1.5 1.5">
+    </a-text>
+
+    <a-text value="Instituto Tecnológico Campus CIITIC" color="#BBB" position="-3.5 0.2 -3" scale="1.5 1.5 1.5">
+    </a-text>
+
+    <a-sky src="#img1" id="sky" rotation="0 0 0"></a-sky>
+
+    <a-entity rotation="0 180 0">
+      <a-camera>
+        <a-cursor fuse="true"></a-cursor>
+      </a-camera>
+    </a-entity>
+
+  </a-scene>
+
+  <script>
+    function imageClick(url) {
+      window.location = url;
+    }
+
+    AFRAME.registerComponent('auto-enter-vr', {
+      init: function () {
+        var scene = this;
+        scene.el.addEventListener('loaded', function () {
+          setTimeout(function () {
+            console.log('Automatically entering VR...');
+            scene.el.sceneEl.enterVR();
+          }, 100);
+        });
+      }
+    });
+
+  </script>
+
+</body>
+
+</html>
