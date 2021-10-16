@@ -5,54 +5,45 @@
   <title>AVAIG</title>
   <meta charset="UTF-8" />
   <script src="aframe-master.min.js"></script>
-  <script src="aframe-event-set-component.min.js"></script>
 
 </head>
 <audio id="flecha" src="voz/flecha.mp3"></audio>
 <audio id="flecha2" src="voz/flecha2.mp3"></audio>
 <audio id="punto" src="voz/punto.mp3"></audio>
 
-<body>
+<body >
 
   <iframe src="voz/silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
   <audio id="player" autoplay>
     <source src="voz/inicio.mp3" type="audio/mp3">
   </audio>
 
-  <a-scene>
+  <a-scene auto-enter-vr>
     <a-assets>
       <img id="tr" src="img/tr.png" />
-      <img id="img1" src="img/lobby.jpg" />
+      <img id="img1" src="img/1.jpg" />
       <img id="info" src="img/inf.png" />
+      <img id="focus" src="img/focus.png" />
 
     </a-assets>
 
-    <a-image src="#tr" alt="MDN" width="2.3" height="2.3" position="-0.3 -0.6 -9" rotation="-60 0 0"
-    onclick="sonido('flecha')"></a-image>
-
-    <a-image src="#tr" alt="MDN" width="2" height="2" position="0 2 5" rotation="35 180 0"
-    onclick="sonido('flecha2')"></a-image>
-
-    <a-text value="Apunta a los objetos para saber que hacen" color="#BBB" position="-3.4 0.2 -3" rotation="0 -3.4 0" scale="1.5 1.5 1.5">
+    <a-image src="#tr" alt="MDN" width="2" height="2" position="-5 -0.5 -10" rotation="-50 10 0"
+      onclick="imageClick('1.html')"></a-image>
+    <a-image src="#focus" alt="MDN" width="30" height="20" position="0 1.5 12" rotation="0 0 0"></a-image>
+    <a-text value="Elige en que punto iniciar tu recorrido" color="#BBB" position="2.8 3.7 3" rotation="0 180 0"
+      scale="1.5 1.5 1.5">
     </a-text>
 
-    <a-image src="#info" alt="MDN" width="1.2" height="1.2" position="0 5.7 -10" rotation="0 0 0"
-      onclick="sonido('punto')"
-      event-set__enter="_event: mouseenter; _target: #TextInfo; visible: true; scale: 3 3 3"
-      event-set__leave="_event: mouseleave; _target: #TextInfo; visible: false; scale: 0 0 0">
+    <a-text value="Instituto Tecnológico Campus CIITIC" color="#BBB" position="-3.5 0.2 -3" scale="1.5 1.5 1.5">
+    </a-text>
 
-      <a-text id="TextInfo" value="sobre el objeto" align="center" color="#FFFF00" scale="0 0 0" visible="false"
-        position="0 -1 0" rotation="0 0 0" material="color: #333"></a-text>
-    </a-image>
+    <a-sky src="#img1" id="sky" rotation="0 0 0"></a-sky>
 
-    <a-text value="IR AL RECORRIDO!" color="#BBB" position="0 8 5" rotation="35 180 0" align="center" scale="1.5 1.5 1.5" geometry="primitive: plane; width: 3" material="color: #333"
-    onclick="imageClick('VR/CIITIC/general/inicio.html')">    </a-text>
-
-    <a-sky src="#img1" id="sky" rotation="0 0 0" onclick ="sonidoof()"></a-sky>
-
-    <a-camera>
-      <a-cursor fuse="true"></a-cursor>
-    </a-camera>
+    <a-entity rotation="0 180 0">
+      <a-camera>
+        <a-cursor fuse="true"></a-cursor>
+      </a-camera>
+    </a-entity>
 
   </a-scene>
 
@@ -61,16 +52,17 @@
       window.location = url;
     }
 
-    function sonido(aud) {
-      var sonido_info = document.getElementById(aud);
-      sonido_info.play();
-      audof = aud;
-    }
-
-    function sonidoof() {
-      var sonido_info = document.getElementById(audof);
-      sonido_info.pause();
-    }
+    AFRAME.registerComponent('auto-enter-vr', {
+      init: function () {
+        var scene = this;
+        scene.el.addEventListener('loaded', function () {
+          setTimeout(function () {
+            console.log('Automatically entering VR...');
+            scene.el.sceneEl.enterVR();
+          }, 100);
+        });
+      }
+    });
 
   </script>
 
