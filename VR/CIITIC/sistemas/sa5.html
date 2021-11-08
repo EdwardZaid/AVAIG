@@ -5,22 +5,60 @@
   <title>AVAIG</title>
   <meta charset="UTF-8" />
   <script src="../../../aframe-master.min.js"></script>
+  <script src="../../../aframe-event-set-component.min.js"></script>
 
 </head>
 
 <body>
+  <audio id="aula10" src="../../../voz/aula10.mp3"></audio>
+  <audio id="aula11" src="../../../voz/aula11.mp3"></audio>
+  <audio id="aula12" src="../../../voz/aula12.mp3"></audio>
+  <audio id="dsc" src="../../../voz/DSC.mp3"></audio>
 
   <a-scene auto-enter-vr>
 
     <a-assets>
       <img id="tr" src="../../../img/tr.png" />
       <img id="img1" src="../../../img/sa5.jpg" />
+      <img id="info" src="../../../img/inf.png" />
+      <img id="au10" src="../../../img/titulos/AULA10.png" />
+      <img id="au11" src="../../../img/titulos/AULA11.png" />
+      <img id="au12" src="../../../img/titulos/AULA12.png" />
+      <img id="ds" src="../../../img/titulos/DSC.png" />
     </a-assets>
 
     <a-image src="#tr" alt="MDN" width="3" height="3.5" position="-2 -2 10" rotation="85 -5 0"
-      onclick="imageClick('sa4.html')"></a-image>
+      onclick="imageClick('sa4-r.html')"></a-image>
 
-    <a-sky src="#img1" id="sky" rotation="0 0 0"></a-sky>
+    <a-image src="#info" alt="MDN" width="1" height="1" position="-7 4.3 1" rotation="0 90 0" onclick="sonido('aula10')"
+      event-set__enter="_event: mouseenter; _target: #TextInfo2; visible: true; scale:  1.2 1 1.2"
+      event-set__leave="_event: mouseleave; _target: #TextInfo2; visible: false; scale: 0 0 0">
+      <a-image src="#au10" id="TextInfo2" alt="MDN" width="4" height="1.5" visible="false" position="0 -1 0"
+        rotation="0 0 0" scale="0 0 0"></a-image>
+    </a-image>
+
+    <a-image src="#info" alt="MDN" width="1" height="1" position="-7 4.3 -4.3" rotation="0 90 0" onclick="sonido('aula11')"
+      event-set__enter="_event: mouseenter; _target: #TextInfo3; visible: true; scale:  1.3 1.2 1.2"
+      event-set__leave="_event: mouseleave; _target: #TextInfo3; visible: false; scale: 0 0 0">
+      <a-image src="#au11" id="TextInfo3" alt="MDN" width="4" height="1.5" visible="false" position="0 -1 0"
+        rotation="0 -20 -4" scale="0 0 0"></a-image>
+    </a-image>
+
+    <a-image src="#info" alt="MDN" width="1.5" height="1.5" position="8 7 -7.3" rotation="0 90 0" onclick="sonido('aula12')"
+      event-set__enter="_event: mouseenter; _target: #TextInfo; visible: true; scale:  1.7 1.5 1.2"
+      event-set__leave="_event: mouseleave; _target: #TextInfo; visible: false; scale: 0 0 0">
+      <a-image src="#au12" id="TextInfo" alt="MDN" width="4" height="1.5" visible="false" position="0 -1 0"
+        rotation="0 200 4" scale="0 0 0"></a-image>
+    </a-image>
+
+    <a-image src="#info" alt="MDN" width="1.5" height="1.5" position="-1 8.3 -8" rotation="0 0 0" onclick="sonido('dsc')"
+      event-set__enter="_event: mouseenter; _target: #TextInfo4; visible: true; scale:  3 6 3"
+      event-set__leave="_event: mouseleave; _target: #TextInfo4; visible: false; scale: 0 0 0">
+      <a-image src="#ds" id="TextInfo4" alt="MDN" width="4" height="1.5" visible="false" position="0 -1 0"
+        rotation="30 0 0" scale="0 0 0"></a-image>
+    </a-image>
+
+    <a-sky src="#img1" id="sky" onclick="sonidoof()"></a-sky>
 
     <a-camera>
       <a-cursor fuse="true"></a-cursor>
@@ -33,7 +71,16 @@
     function imageClick(url) {
       window.location = url;
     }
+    function sonido(aud) {
+      var sonido_info = document.getElementById(aud);
+      sonido_info.play();
+      audof = aud;
+    }
 
+    function sonidoof() {
+      var sonido_info = document.getElementById(audof);
+      sonido_info.pause();
+    }
     AFRAME.registerComponent('auto-enter-vr', {
       init: function () {
         var scene = this;
