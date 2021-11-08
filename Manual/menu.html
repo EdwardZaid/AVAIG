@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>AVAIG</title>
+  <meta charset="UTF-8" />
+  <script src="../aframe.min.js"></script>
+  <script src="../aframe-event-set-component.min.js"></script>
+  <script src="../aframe-mouse-cursor-component.min.js"></script>
+
+
+</head>
+<body>
+  <iframe src="../voz/silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
+  <audio id="player" autoplay>
+    <source src="../voz/menu.mp3" type="audio/mp3">
+  </audio>
+
+  <a-scene vr-mode-ui = "enabled: false">
+    <a-assets>
+      <img id="tr" src="../img/tr.png" />
+      <img id="img1" src="../img/1-1.jpg" />
+      <img id="info" src="../img/inf.png" />
+      <img id="focus" src="../img/focus.png" />
+      <img id="gen" src="../img/7.jpg" />
+      <img id="sis" src="../img/s1.jpg" />
+      <img id="ind" src="../img/ind.jpg" />
+      <img id="b" src="../img/b.jpg" />
+
+    </a-assets>
+
+    <a-image src="#focus" alt="MDN" width="30" height="20" position="0 1.5 -13" rotation="0 0 0"></a-image>
+    <a-text value="Elige en que punto iniciar tu recorrido" color="#BBB" position="-2.9 3.6 -3" rotation="0 0 0"
+      scale="1.5 1.5 1.5">
+    </a-text>
+
+    <a-image src="#gen" alt="MDN" width="5.5" height="4" position="0 6 -12.5" rotation="0 0 0" onclick="imageClick('CIITIC/general/inicio.html')"></a-image>
+    <a-text value="Recorrido General" color="#000000" position="-0.7 2 -3" rotation="0 0 0" scale="0.8 0.8 0.8">
+    </a-text>
+
+    <a-image src="#sis" alt="MDN" width="5.5" height="4" position="-8 0 -12.5" rotation="0 0 0" onclick="imageClick('CIITIC/sistemas/s1.html')"></a-image>
+    <a-text value="Edificio De Sistemas" color="#000000" position="-2.7 0.6 -3" rotation="0 0 0" scale="0.8 0.8 0.8">
+    </a-text>
+
+    <a-image src="#ind" alt="MDN" width="5.5" height="4" position="8 0 -12.5" rotation="0 0 0" onclick="imageClick('CIITIC/industrial/i1.html')"></a-image>
+    <a-text value="Edificio De Industrial" color="#000000" position="1.1 0.6 -3" rotation="0 0 0" scale="0.8 0.8 0.8">
+    </a-text>
+
+    <a-image src="#b" alt="MDN" width="5.5" height="4" position="0 -4 -12.5" rotation="0 0 0" onclick="imageClick('CIITIC/b/b1.html')"></a-image>
+    <a-text value="Edificio B" color="#000000" position="-0.41 -0.4 -3" rotation="0 0 0" scale="0.8 0.8 0.8">
+    </a-text>
+
+    <a-sky src="#img1" id="sky"></a-sky>
+
+    <a-entity camera position="0 1.6 0" look-controls mouse-cursor>
+
+  </a-scene>
+
+  <script>
+    function imageClick(url) {
+      window.location = url;
+    }
+
+  </script>
+
+</body>
+
+</html>
