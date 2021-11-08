@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>AVAIG</title>
+  <meta charset="UTF-8" />
+  <script src="../../../aframe-master.min.js"></script>
+  <script src="../../../aframe-event-set-component.min.js"></script>
+</head>
+
+<body>
+  <audio id="aula9" src="../../../voz/aula9.mp3"></audio>
+  <audio id="aula7" src="../../../voz/aula7.mp3"></audio>
+
+  <a-scene auto-enter-vr>
+
+    <a-assets>
+      <img id="tr" src="../../../img-1/tr.png" />
+      <img id="img1" src="../../../img-1/da9.jpg" />
+      <img id="info" src="../../../img-1/inf.png" />
+      <img id="au7" src="../../../img-1/titulos/.png" />
+      <img id="au9" src="../../../img-1/titulos/.png" />
+    </a-assets>
+
+    <a-image src="#tr" alt="MDN" width="2" height="2" position="-0.5 -2 -7" rotation="-60 0 0"
+      onclick="imageClick('da10.html')"></a-image>
+    <a-image src="#tr" alt="MDN" width="3" height="3.5" position="-1 -2 8" rotation="85 0 0"
+      onclick="imageClick('da8.html')"></a-image>
+
+    <a-image src="#info" alt="MDN" width="1" height="1" position="8 4 0" rotation="0 90 0" onclick="sonido('aula7')"
+      event-set__enter="_event: mouseenter; _target: #TextInfo; visible: true; scale: 1.2 1 1.2"
+      event-set__leave="_event: mouseleave; _target: #TextInfo; visible: false; scale: 0 0 0">
+      <a-image src="#au7" id="TextInfo" alt="MDN" width="4" height="1.5" visible="false" position="0 -1 0"
+        rotation="0 180 0" scale="0 0 0"></a-image>
+    </a-image>
+
+      <a-sky src="#img1" id="sky" rotation="0 0 0" onclick="sonidoof()"></a-sky>
+
+      <a-camera>
+        <a-cursor fuse="true"></a-cursor>
+      </a-camera>
+
+  </a-scene>
+
+  <script>
+    function imageClick(url) {
+      window.location = url;
+    }
+
+    function sonido(aud) {
+      var sonido_info = document.getElementById(aud);
+      sonido_info.play();
+      audof = aud;
+    }
+
+    function sonidoof() {
+      var sonido_info = document.getElementById(audof);
+      sonido_info.pause();
+    }
+
+    AFRAME.registerComponent('auto-enter-vr', {
+      init: function () {
+        var scene = this;
+        scene.el.addEventListener('loaded', function () {
+          setTimeout(function () {
+
+            console.log('Automatically entering VR...');
+            scene.el.sceneEl.enterVR();
+          }, 10);
+
+        });
+      }
+    });
+  </script>
+
+</body>
+
+</html>

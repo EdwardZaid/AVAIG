@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>AVAIG</title>
+  <meta charset="UTF-8" />
+  <script src="../../../aframe-master.min.js"></script>
+
+</head>
+
+<body>
+
+  <a-scene auto-enter-vr>
+
+    <a-assets>
+      <img id="tr" src="../../../img-1/tr.png" />
+      <img id="img1" src="../../../img-1/c5.jpg" />
+    </a-assets>
+
+    <a-image src="#tr" alt="MDN" width="2" height="2" position="8 -2 0" rotation="-70 -90 0"
+      onclick="imageClick('c6.html')"></a-image>
+    <a-image src="#tr" alt="MDN" width="3" height="3.2" position="-1 -5 10" rotation="80 -5 0"
+      onclick="imageClick('c4.html')"></a-image>
+    <a-sky src="#img1" id="sky" rotation="0 0 0"></a-sky>
+
+    <a-camera>
+      <a-cursor fuse="true"></a-cursor>
+    </a-camera>
+
+
+  </a-scene>
+
+  <script>
+    function imageClick(url) {
+      window.location = url;
+    }
+
+    AFRAME.registerComponent('auto-enter-vr', {
+      init: function () {
+        var scene = this;
+        scene.el.addEventListener('loaded', function () {
+          setTimeout(function () {
+
+            console.log('Automatically entering VR...');
+            scene.el.sceneEl.enterVR();
+          }, 10);
+
+        });
+      }
+    });
+  </script>
+
+</body>
+
+</html>
