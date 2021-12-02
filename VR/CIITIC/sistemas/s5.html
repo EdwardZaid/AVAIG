@@ -13,6 +13,7 @@
   <audio id="aula1" src="../../../voz/aula1.mp3"></audio>
   <audio id="aula2" src="../../../voz/aula2.mp3"></audio>
   <audio id="aula3" src="../../../voz/aula3.mp3"></audio>
+  <audio id="ofvi" src="../../../voz/Ofvi.mp3"></audio>
 
   <a-scene auto-enter-vr>
 
@@ -23,6 +24,7 @@
       <img id="au1" src="../../../img/titulos/AULA1.png" />
       <img id="au2" src="../../../img/titulos/AULA2.png" />
       <img id="au3" src="../../../img/titulos/AULA3.png" />
+      <img id="ov" src="../../../img/titulos/OV.png" />
     </a-assets>
 
     <a-image src="#tr" alt="MDN" width="3" height="3.5" position="-1 -2 10" rotation="85 -5 0"
@@ -49,10 +51,10 @@
         rotation="0 195 0" scale="0 0 0"></a-image>
     </a-image>
 
-    <a-image src="#info" alt="MDN" width="1" height="1" position="-1 7 -8" rotation="0 0 0" onclick="sonido('NULL')"
+    <a-image src="#info" alt="MDN" width="1" height="1" position="-1 7 -8" rotation="0 0 0" onclick="sonido('ofvi')"
       event-set__enter="_event: mouseenter; _target: #TextInfo4; visible: true; scale: 1.2 1 1.2"
       event-set__leave="_event: mouseleave; _target: #TextInfo4; visible: false; scale: 0 0 0">
-      <a-image src="#au3" id="TextInfo4" alt="MDN" width="4" height="1.5" visible="false" position="0 -1 0"
+      <a-image src="#ov" id="TextInfo4" alt="MDN" width="4" height="1.5" visible="false" position="0 -1 0"
         rotation="0 0 0" scale="0 0 0"></a-image>
     </a-image>
 
