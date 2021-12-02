@@ -18,6 +18,7 @@
 
   <a-scene vr-mode-ui = "enabled: false">
 
+
     <a-assets>
       <img id="tr" src="../../../img/tr.png" />
       <img id="img1" src="../../../img/sa6.jpg" />
@@ -55,9 +56,8 @@
 
     <a-sky src="#img1" id="sky" onclick="sonidoof()"></a-sky>
 
-  <a-entity camera position="0 1.6 0" look-controls mouse-cursor>
-
-
+    <a-entity rotation="0 180 0" camera position="0 1.6 0" look-controls mouse-cursor>
+	
   </a-scene>
 
   <script>
@@ -74,7 +74,6 @@
       var sonido_info = document.getElementById(audof);
       sonido_info.pause();
     }
-
 
   </script>
 
