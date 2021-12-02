@@ -5,42 +5,70 @@
   <title>AVAIG</title>
   <meta charset="UTF-8" />
   <script src="../../../aframe-master.min.js"></script>
+  <script src="../../../aframe-event-set-component.min.js"></script>
 
 </head>
 
 <body>
+  <audio id="labc" src="../../../voz/labc.mp3"></audio>
 
   <a-scene auto-enter-vr>
 
     <a-assets>
       <img id="tr" src="../../../img/tr.png" />
       <img id="img1" src="../../../img/ba3.jpg" />
+      <img id="info" src="../../../img/inf.png" />
+      <img id="lc" src="../../../img/titulos/LC.png" />
     </a-assets>
 
     <a-image src="#tr" alt="MDN" width="3" height="3.5" position="-1 -2 10" rotation="80 0 7"
-      onclick="imageClick('ba2.html')"></a-image>
-
+      onclick="imageClick('ba2-r.html')"></a-image>
     <a-image src="#tr" alt="MDN" width="2" height="2" position="-6 -3 -2" rotation="-70 90 0"
-      onclick="imageClick('s3ass.html')"></a-image>
-    <a-image src="#tr" alt="MDN" width="2.3" height="2.3" position="-6 -2.8 3.5" rotation="-70 90 0"
-      onclick="imageClick('s3ass.html')"></a-image>
-    <a-image src="#tr" alt="MDN" width="1.9" height="1.9" position="4 -1.8 2.5" rotation="-70 -90 0"
-      onclick="imageClick('s3.html')"></a-image>
+      onclick="imageClick('ba6.html')"></a-image>
     <a-image src="#tr" alt="MDN" width="1.7" height="1.7" position="3.4 -1.5 -1" rotation="-70 -90 0"
-      onclick="imageClick('s3.html')"></a-image>
+      onclick="imageClick('ba8.html')"></a-image>
+
+    <!-- ## Izquierda -->
+    <a-image src="#info" alt="MDN" width="1" height="1" position="-6.5 4.8 -1.9" rotation="0 90 0" onclick="sonido('labc')"
+      event-set__enter="_event: mouseenter; _target: #TextInfo4; visible: true; scale: 1.2 1 1.2"
+      event-set__leave="_event: mouseleave; _target: #TextInfo4; visible: false; scale: 0 0 0">
+      <a-image src="#lc" id="TextInfo4" alt="MDN" width="4" height="1.5" visible="false" position="0 -1 0"
+        rotation="0 0 0" scale="0 0 0"></a-image>
+    </a-image>
+
+    <!-- ##derecha -->
+    <a-image src="#info" alt="MDN" width="1" height="1" position="6 5 -1.7" rotation="0 90 0" onclick="sonido('labc')"
+      event-set__enter="_event: mouseenter; _target: #TextInfo; visible: true; scale: 1.2 1 1.2"
+      event-set__leave="_event: mouseleave; _target: #TextInfo; visible: false; scale: 0 0 0">
+      <a-image src="#lc" id="TextInfo" alt="MDN" width="4" height="1.5" visible="false" position="0 -1 0"
+        rotation="0 195 0" scale="0 0 0"></a-image>
+    </a-image>
+
 
     <a-sky src="#img1" id="sky" rotation="0 0 0"></a-sky>
 
-    <a-camera>
-      <a-cursor fuse="true"></a-cursor>
-    </a-camera>
-
+    <a-entity rotation="0 180 0">
+      <a-camera>
+        <a-cursor fuse="true"></a-cursor>
+      </a-camera>
+    </a-entity>
 
   </a-scene>
 
   <script>
     function imageClick(url) {
       window.location = url;
+    }
+
+    function sonido(aud) {
+      var sonido_info = document.getElementById(aud);
+      sonido_info.play();
+      audof = aud;
+    }
+
+    function sonidoof() {
+      var sonido_info = document.getElementById(audof);
+      sonido_info.pause();
     }
 
     AFRAME.registerComponent('auto-enter-vr', {
