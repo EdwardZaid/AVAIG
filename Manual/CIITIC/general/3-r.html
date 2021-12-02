@@ -11,18 +11,18 @@
 </head>
 
 <body>
+
   <a-scene vr-mode-ui = "enabled: false">
-	
+  
     <a-assets>
       <img id="tr" src="../../../img/tr.png" />
-      <img id="img" src="../../../img/3.jpg" />
+      <img id="img" src="../../../img/4.jpg" />
     </a-assets>
 
-    <a-image src="#tr" alt="MDN" width="2" height="2" position="-0.5 -1 -10" rotation="-50 10 0"
-      onclick="imageClick('3.html')"></a-image>
-    <a-image src="#tr" alt="MDN" width="2" height="2" position="-1.5 -3 7" rotation="-15 0 -10"
-      onclick="imageClick('1-r.html')"></a-image>
-
+    <a-image src="#tr" alt="MDN" width="2" height="2" position="-0.5 -1 -10" rotation="-60 0 0"
+      onclick="imageClick('4.html')"></a-image>
+    <a-image src="#tr" alt="MDN" width="3" height="2" position="5 -3 10" rotation="-15 0 -20"
+      onclick="imageClick('2-r.html')"></a-image>
 
     <a-sky src="#img" id="sky"></a-sky>
 
@@ -34,6 +34,7 @@
     function imageClick(url) {
       window.location = url;
     }
+
 
   </script>
 

@@ -4,13 +4,16 @@
 <head>
   <title>AVAIG</title>
   <meta charset="UTF-8" />
-  <script src="../../../aframe-master.min.js"></script>
+  <script src="aframe.min.js"></script>
+  <script src="aframe-event-set-component.min.js"></script>
+  <script src="aframe-mouse-cursor-component.min.js"></script>
 
 </head>
 
 <body>
 
-  <a-scene auto-enter-vr>
+  <a-scene vr-mode-ui = "enabled: false">
+
     <a-assets>
       <img id="tr" src="../../../img/tr.png" />
       <img id="img" src="../../../img/5.jpg" />
@@ -19,13 +22,11 @@
     <a-image src="#tr" alt="MDN" width="2" height="2" position="-0.5 -1 -10" rotation="-60 0 0"
       onclick="imageClick('5.html')"></a-image>
     <a-image src="#tr" alt="MDN" width="3" height="3.5" position="-2 -2 10" rotation="-50 0 -10"
-      onclick="imageClick('3.html')"></a-image>
+      onclick="imageClick('3-r.html')"></a-image>
 
     <a-sky src="#img" id="sky"></a-sky>
 
-    <a-camera>
-      <a-cursor fuse="true"></a-cursor>
-    </a-camera>
+  <a-entity camera position="0 1.6 0" look-controls mouse-cursor>
 
   </a-scene>
 
@@ -34,17 +35,6 @@
       window.location = url;
     }
 
-    AFRAME.registerComponent('auto-enter-vr', {
-      init: function () {
-        var scene = this;
-        scene.el.addEventListener('loaded', function () {
-          setTimeout(function () {
-            console.log('Automatically entering VR...');
-            scene.el.sceneEl.enterVR();
-          }, 100);
-        });
-      }
-    });
   </script>
 
 </body>

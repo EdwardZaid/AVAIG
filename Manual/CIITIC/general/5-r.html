@@ -12,21 +12,28 @@
 
 <body>
 
+  <iframe src="silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
+  
+  <audio id="player" autoplay>
+    <source src="../../../voz/3.mp3" type="audio/mp3">
+  </audio>
+
   <a-scene vr-mode-ui = "enabled: false">
   
     <a-assets>
       <img id="tr" src="../../../img/tr.png" />
-      <img id="img1" src="../../../img/14-2.jpg" />
+      <img id="img" src="../../../img/6.jpg" />
     </a-assets>
 
     <a-image src="#tr" alt="MDN" width="2" height="2" position="-0.5 -1 -10" rotation="-60 0 0"
-      onclick="imageClick('13.html')"></a-image>
-    <a-image src="#tr" alt="MDN" width="2" height="2" position="-7 0 -2" rotation="-60 70 0"
-      onclick="imageClick('13-1-r.html')"></a-image>
+      onclick="imageClick('6.html')"></a-image>
+    <a-image src="#tr" alt="MDN" width="3" height="3.5" position="8 -5 10" rotation="70 0 0"
+      onclick="imageClick('18.html')"></a-image>
 
-    <a-sky src="#img1" id="sky" rotation="0 0 0"></a-sky>
+    <a-sky src="#img" id="sky"></a-sky>
 
-  <a-entity camera position="0 1.6 0" look-controls mouse-cursor>
+    <a-entity rotation="0 180 0" camera position="0 1.6 0" look-controls mouse-cursor>
+
 
   </a-scene>
 

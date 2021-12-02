@@ -4,6 +4,7 @@
 <head>
   <title>AVAIG</title>
   <meta charset="UTF-8" />
+  <script src="../../../aframe-master.min.js"></script>
   <script src="aframe.min.js"></script>
   <script src="aframe-event-set-component.min.js"></script>
   <script src="aframe-mouse-cursor-component.min.js"></script>
@@ -12,32 +13,23 @@
 
 <body>
   <audio id="sistemas" src="../../../voz/EdificioSistemas.mp3"></audio>
-
+  
   <a-scene vr-mode-ui = "enabled: false">
 
     <a-assets>
       <img id="tr" src="../../../img/tr.png" />
-      <img id="img1" src="../../../img/8.jpg" />
+      <img id="img1" src="../../../img/11-1.jpg" />
       <img id="info" src="../../../img/inf.png" />
     </a-assets>
 
-    <a-image src="#tr" alt="MDN" width="2" height="2" position="0.5 -1 -10" rotation="-60 0 0"
-      onclick="imageClick('8.html')"></a-image>
-    <a-image src="#tr" alt="MDN" width="3" height="3" position="-1 -2 10" rotation="85 -5 0"
-      onclick="imageClick('6-r.html')"></a-image>
+    <a-image src="#tr" alt="MDN" width="2.3" height="2.3" position="0.5 -3 -10" rotation="-60 0 0"
+      onclick="imageClick('a1.html')"></a-image>
+    <a-image src="#tr" alt="MDN" width="2" height="2" position="-8 0 0" rotation="-70 85 0"
+      onclick="imageClick('11-r.html')"></a-image>
     <a-image src="#tr" alt="MDN" width="2" height="2" position="8 0 1" rotation="-50 80 0"
-      onclick="imageClick('../sistemas/s1.html')"></a-image>
+      onclick="imageClick('11-2.html')"></a-image>
 
-    <a-image src="#info" alt="MDN" width="1" height="1" position="8 7 1" rotation="-50 80 0" onclick="sonido('sistemas')"
-      event-set__enter="_event: mouseenter; _target: #TextInfo; visible: true; scale: 3 3 3"
-      event-set__leave="_event: mouseleave; _target: #TextInfo; visible: false; scale: 0 0 0">
-
-      <a-text id="TextInfo" value="Edificio De Sistemas" align="center" color="#FFFF00" scale="0 0 0" visible="false"
-        position="0 -2 0" rotation="-45 180 -1.3"
-        material="color: #333"></a-text>
-    </a-image>
-
-    <a-sky src="#img1" id="sky" rotation="0 0 0" onclick ="sonidoof()"></a-sky>
+    <a-sky src="#img1" id="sky" rotation="0 0 0" onclick="sonidoof()"></a-sky>
 
   <a-entity camera position="0 1.6 0" look-controls mouse-cursor>
 
@@ -45,14 +37,14 @@
 
   <script>
 
-   audof = ""; 
+    audof = "";
     function imageClick(url) {
       window.location = url;
     }
     function sonido(aud) {
       var sonido_info = document.getElementById(aud);
       sonido_info.play();
-      audof=aud;
+      audof = aud;
     }
 
     function sonidoof() {
