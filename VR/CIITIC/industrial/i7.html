@@ -10,9 +10,9 @@
 </head>
 
 <body>
-  <audio id="aula1" src="../../../voz/aula1.mp3"></audio>
-  <audio id="aula2" src="../../../voz/aula2.mp3"></audio>
-  <audio id="aula3" src="../../../voz/aula3.mp3"></audio>
+  <audio id="aula" src="../../../voz/aula.mp3"></audio>
+  <audio id="purificadora" src="../../../voz/Purificadora.mp3"></audio>
+  <audio id="labpos" src="../../../voz/LabPros.mp3"></audio>
 
   <a-scene auto-enter-vr>
 
@@ -20,29 +20,35 @@
       <img id="tr" src="../../../img/tr.png" />
       <img id="img1" src="../../../img/i7.jpg" />
       <img id="info" src="../../../img/inf.png" />
+      <img id="au" src="../../../img/titulos/AULA.png" />
+      <img id="pur" src="../../../img/titulos/P.png" />
+      <img id="pros" src="../../../img/titulos/LP.png" />
     </a-assets>
-    <a-image src="#tr" alt="MDN" width="2" height="2" position="0 -2 -10" rotation="-60 0 0"
-      onclick="imageClick('i6.html')"></a-image>
 
-    <a-image src="#info" alt="MDN" width="1" height="1" position="-8 5 2.5" rotation="0 90 0" onclick="sonido('aula1')"
-      event-set__enter="_event: mouseenter; _target: #TextInfo2; visible: true; scale: 3 3 3"
-      event-set__leave="_event: mouseleave; _target: #TextInfo2; visible: false; scale: 0 0 0">
-      <a-text id="TextInfo2" value="Aula 1" align="center" color="#FFFF00" scale="0 0 0" visible="false"
-        position="0 -1 0" rotation="0 0 0" material="color: #333"></a-text>
+    <a-image src="#tr" alt="MDN" width="2" height="2" position="0 -2 -10" rotation="-60 0 0"
+      onclick="imageClick('i6-r.html')"></a-image>
+
+    <a-image src="#info" alt="MDN" width="1" height="1" position="-8 5 2.5" rotation="0 90 0" onclick="sonido('aula')"
+      event-set__enter="_event: mouseenter; _target: #TextInfo; visible: true; scale:  1.2 1 1.2"
+      event-set__leave="_event: mouseleave; _target: #TextInfo; visible: false; scale: 0 0 0">
+      <a-image src="#au" id="TextInfo" alt="MDN" width="4" height="1.5" visible="false" position="0 -1 0"
+        rotation="0 0 0" scale="0 0 0"></a-image>
     </a-image>
 
     <a-image src="#info" alt="MDN" width="1.3" height="1.3" position="8 7 -4" rotation="0 90 0"
-      onclick="sonido('aula3')" event-set__enter="_event: mouseenter; _target: #TextInfo; visible: true; scale: 3 3 3"
-      event-set__leave="_event: mouseleave; _target: #TextInfo; visible: false; scale: 0 0 0">
-      <a-text id="TextInfo" value="Aula 3" align="center" color="#FFFF00" scale="0 0 0" visible="false"
-        position="0 -1 0" rotation="0 180 0" material="color: #333"></a-text>
+      onclick="sonido('purificadora')"
+      event-set__enter="_event: mouseenter; _target: #TextInfo2; visible: true; scale:  1.5 1.3 1.5"
+      event-set__leave="_event: mouseleave; _target: #TextInfo2; visible: false; scale: 0 0 0">
+      <a-image src="#pur" id="TextInfo2" alt="MDN" width="4" height="1.5" visible="false" position="0 -1 0"
+        rotation="0 180 4" scale="0 0 0"></a-image>
     </a-image>
 
     <a-image src="#info" alt="MDN" width="1.5" height="1.5" position="8 7.6 4" rotation="0 90 0"
-      onclick="sonido('aula3')" event-set__enter="_event: mouseenter; _target: #TextInfo3; visible: true; scale: 3 3 3"
+      onclick="sonido('labpos')" 
+      event-set__enter="_event: mouseenter; _target: #TextInfo3; visible: true; scale:  1.5 1.3 1.5"
       event-set__leave="_event: mouseleave; _target: #TextInfo3; visible: false; scale: 0 0 0">
-      <a-text id="TextInfo3" value="Aula 3" align="center" color="#FFFF00" scale="0 0 0" visible="false"
-        position="0 -1 0" rotation="0 180 0" material="color: #333"></a-text>
+      <a-image src="#pros" id="TextInfo3" alt="MDN" width="4" height="1.5" visible="false" position="0 -1 0"
+        rotation="0 160 0" scale="0 0 0"></a-image>
     </a-image>
 
     <a-sky src="#img1" id="sky" rotation="0 0 0" onclick="sonidoof()"></a-sky>
