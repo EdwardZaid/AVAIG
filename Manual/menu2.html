@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>AVAIG</title>
+  <meta charset="UTF-8" />
+  <script src="../aframe.min.js"></script>
+  <script src="../aframe-event-set-component.min.js"></script>
+  <script src="../aframe-mouse-cursor-component.min.js"></script>
+
+</head>
+
+<body>
+  <iframe src="../voz/silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
+  <audio id="player" autoplay>
+    <source src="../voz/menu.mp3" type="audio/mp3">
+  </audio>
+
+  <a-scene vr-mode-ui="enabled: false">
+    <a-assets>
+      <img id="tr" src="../img-1/tr.png" />
+      <img id="img1" src="../img-1/1-1.jpg" />
+      <img id="info" src="../img-1/inf.png" />
+      <img id="focus" src="../img-1/focus.png" />
+      <img id="gen" src="../img-1/2.jpg" />
+      <img id="d" src="../img-1/d.jpg" />
+      <img id="c" src="../img-1/c.jpg" />
+      <img id="sal" src="../img-1/salon.jpg" />
+
+    </a-assets>
+
+    <a-image src="#focus" alt="MDN" width="30" height="20" position="0 1.5 -13" rotation="0 0 0"></a-image>
+    <a-text value="Elige en que punto iniciar tu recorrido" color="#BBB" position="-2.9 3.6 -3" rotation="0 0 0"
+      scale="1.5 1.5 1.5">
+    </a-text>
+
+    <a-image src="#gen" alt="MDN" width="5.5" height="4" position="0 6 -12.5" rotation="0 0 0"
+      onclick="imageClick('CIDEC/general/1.html')"></a-image>
+    <a-text value="Recorrido General" color="#000000" position="-0.7 2 -3" rotation="0 0 0" scale="0.8 0.8 0.8">
+    </a-text>
+
+    <a-image src="#d" alt="MDN" width="5.5" height="4" position="-8 0 -12.5" rotation="0 0 0"
+      onclick="imageClick('CIDEC/D/d1.html')"></a-image>
+    <a-text value="Edificio D" color="#000000" position="-2.3 0.6 -3" rotation="0 0 0" scale="0.8 0.8 0.8">
+    </a-text>
+
+    <a-image src="#c" alt="MDN" width="5.5" height="4" position="8 0 -12.5" rotation="0 0 0"
+      onclick="imageClick('CIDEC/C/c1.html')"></a-image>
+    <a-text value="Edificio C" color="#000000" position="1.58 0.6 -3" rotation="0 0 0" scale="0.8 0.8 0.8">
+    </a-text>
+
+    <a-image src="#sal" alt="MDN" width="5.5" height="4" position="0 -4 -12.5" rotation="0 0 0"
+      onclick="imageClick('CIDEC/B/b1.html')"></a-image>
+    <a-text value="Edificio B" color="#000000" position="-0.41 -0.4 -3" rotation="0 0 0" scale="0.8 0.8 0.8">
+    </a-text>
+
+    <a-sky src="#img1" id="sky" rotation="0 0 0" onclick="sonidoof('flecha')"></a-sky>
+
+    <a-entity camera position="0 1.6 0" look-controls mouse-cursor>
+  </a-scene>
+
+  <script>
+    function imageClick(url) {
+      window.location = url;
+    }
+
+  </script>
+
+</body>
+
+</html>

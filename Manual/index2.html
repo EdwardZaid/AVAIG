@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>AVAIG</title>
+  <meta charset="UTF-8" />
+  <script src="../aframe.min.js"></script>
+  <script src="../aframe-event-set-component.min.js"></script>
+  <script src="../aframe-mouse-cursor-component.min.js"></script>
+
+</head>
+<audio id="flecha" src="../voz/flecha.mp3"></audio>
+<audio id="flecha2" src="../voz/flecha2.mp3"></audio>
+<audio id="punto" src="../voz/punto.mp3"></audio>
+
+<body>
+  <iframe src="../voz/silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
+  <audio id="player" autoplay>
+    <source src="../voz/inicio.mp3" type="audio/mp3">
+  </audio>
+
+  <a-scene vr-mode-ui = "enabled: false">
+    <a-assets>
+      <img id="tr" src="../img-1/tr.png" />
+      <img id="img1" src="../img-1/1-1.jpg" />
+      <img id="info" src="../img-1/inf.png" />
+      <img id="focus" src="../img-1/focus.png" />
+
+    </a-assets>
+
+    <a-image src="#tr" id="fle" alt="MDN" width="2" height="2" position="-1.5 -0.5 -10" rotation="-50 10 0"
+      onclick="sonido('flecha')"
+      event-set__enter="_event: mouseenter; _target: #vr; visible: false"
+      event-set__leave="_event: mouseleave; _target: #inf; visible: true; scale: 1 1 1"></a-image>
+
+    <a-image src="#info" id="inf" alt="MDN" width="1.2" height="1.2" position="1.7 2.5 -9" rotation="0 0 0" visible="false" scale="0 0 0"
+      onclick="sonido('punto')" 
+      event-set__enter="_event: mouseenter; _target: #TextInfo; visible: true; scale: 3 3 3"
+      event-set__leave="_event: mouseleave; _target: #ini; visible: true; scale: 1.5 1.5 1.5">
+
+      <a-text id="TextInfo" value="Caseta de vigilancia" align="center" color="#FFFF00" scale="0 0 0" visible="false"
+        position="0 -1 0" rotation="0 0 0" material="color: #333"></a-text>
+    </a-image>
+
+    <a-text value="INICIAR!" id="ini" color="#BBB" position="-6 3.5 -9" rotation="0 30 -1" align="center" scale="0 0 0" geometry="primitive: plane; width: 3" material="color: #333" visible="false"
+    onclick="imageClick('menu2.html')">    </a-text>
+
+    <a-text id="vr" value="PRESIONA EL BOTON CON LAS LETRAS VR" color="#FF0000" position="-3.5 0.2 -3"
+      scale="1.5 1.5 1.5">
+    </a-text>
+
+    <a-sky src="#img1" id="sky" rotation="0 0 0" onclick ="sonidoof('flecha')"></a-sky>
+
+    <a-entity camera position="0 1.6 0" look-controls mouse-cursor>
+
+  </a-scene>
+
+  <script>
+    function imageClick(url) {
+      window.location = url;
+    }
+
+    function sonido(aud) {
+      var sonido_info = document.getElementById(aud);
+      sonido_info.play();
+      audof = aud;
+    }
+
+    function sonidoof(aud) {
+      var sonido_info = document.getElementById(aud);
+      sonido_info.pause();
+    }
+
+  </script>
+
+</body>
+
+</html>
