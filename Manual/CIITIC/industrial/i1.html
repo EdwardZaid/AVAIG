@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>AVAIG</title>
+  <meta charset="UTF-8" />
+  <script src="../../../aframe.min.js"></script>
+  <script src="../../../aframe-event-set-component.min.js"></script>
+  <script src="../../../aframe-mouse-cursor-component.min.js"></script>
+
+</head>
+
+<body>
+  <audio id="tablero" src="../../../voz/tablero.mp3"></audio>
+  <audio id="mision" src="../../../voz/mision.mp3"></audio>
+  <audio id="vision" src="../../../voz/vision.mp3"></audio>
+
+
+  <a-scene vr-mode-ui = "enabled: false">
+
+    <a-assets>
+      <img id="tr" src="../../../img/tr.png" />
+      <img id="img1" src="../../../img/i1.jpg" />
+      <img id="info" src="../../../img/inf.png" />
+    </a-assets>
+
+    <a-image src="#tr" alt="MDN" width="2" height="2" position="-0.5 -1 -10" rotation="-65 0 0"
+      onclick="imageClick('i2.html')"></a-image>
+    <a-image src="#tr" alt="MDN" width="3" height="3.5" position="-2 -2 10" rotation="85 -5 0"
+      onclick="imageClick('../general/17-r.html')"></a-image>
+
+    <a-image src="#info" alt="MDN" width="0.7" height="0.7" position="-7 2.5 1.5" rotation="0 90 0"
+      onclick="sonido('tablero')"
+      event-set__enter="_event: mouseenter; _target: #TextInfo1; visible: true; scale: 1.5 1.5 1.5"
+      event-set__leave="_event: mouseleave; _target: #TextInfo1; visible: false; scale: 0 0 0">
+      <a-text id="TextInfo1" value="Tablero de avisos" align="center" color="#FFFF00" scale="1 1 1" visible="false"
+        position="0 1 0" rotation="0 5 0" material="color: #333"></a-text>
+    </a-image>
+
+    <a-sky src="#img1" id="sky" rotation="0 0 0" onclick="sonidoof()"></a-sky>
+
+  <a-entity camera position="0 1.6 0" look-controls mouse-cursor>
+
+
+  </a-scene>
+
+  <script>
+    function imageClick(url) {
+      window.location = url;
+    }
+
+    function sonido(aud) {
+      var sonido_info = document.getElementById(aud);
+      sonido_info.play();
+      audof = aud;
+    }
+
+    function sonidoof() {
+      var sonido_info = document.getElementById(audof);
+      sonido_info.pause();
+    }
+
+  </script>
+
+</body>
+
+</html>
