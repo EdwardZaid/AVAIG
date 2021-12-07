@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>AVAIG</title>
+  <meta charset="UTF-8" />
+  <script src="../../../aframe-master.min.js"></script>
+  <script src="../../../aframe-event-set-component.min.js"></script>
+
+</head>
+
+<body>
+  <audio id="suba" src="../../../voz/SA.mp3"></audio>
+  <audio id="subpv" src="../../../voz/SPV.mp3"></audio>
+  <a-scene auto-enter-vr>
+
+    <a-assets>
+      <img id="tr" src="../../../img-1/tr.png" />
+      <img id="img1" src="../../../img-1/da4.jpg" />
+      <img id="info" src="../../../img-1/inf.png" />
+      <img id="sa" src="../../../img-1/titulos/SA.png" />
+      <img id="spv" src="../../../img-1/titulos/SPV.png" />
+    </a-assets>
+
+    <a-image src="#tr" alt="MDN" width="2" height="2" position="0.5 -1 -6" rotation="-70 -5 0"
+      onclick="imageClick('da5.html')"></a-image>
+    <a-image src="#tr" alt="MDN" width="3" height="3.5" position="-2 -2 8" rotation="85 -8 0"
+      onclick="imageClick('da3-r.html')"></a-image>
+
+
+    <a-image src="#info" alt="MDN" width="1" height="1" position="8 3 5" rotation="0 90 0" onclick="sonido('subpv')"
+      event-set__enter="_event: mouseenter; _target: #TextInfo; visible: true; scale: 3 7 3"
+      event-set__leave="_event: mouseleave; _target: #TextInfo; visible: false; scale: 0 0 0">
+      <a-image src="#spv" id="TextInfo" alt="MDN" width="4" height="1.5" visible="false" position="0 -1 -1"
+        rotation="0 160 "></a-image>
+    </a-image>
+
+    <a-image src="#info" alt="MDN" width="1" height="1" position="-7.5 3.7 -1" rotation="0 90 0" onclick="sonido('suba')"
+      event-set__enter="_event: mouseenter; _target: #TextInfo2; visible: true; scale: 3 7 3"
+      event-set__leave="_event: mouseleave; _target: #TextInfo2; visible: false; scale: 0 0 0">
+      <a-image src="#sa" id="TextInfo2" alt="MDN" width="4" height="1.5" visible="false" position="0 -1 0.5"
+        rotation="0 0 0" scale="0 0 0"></a-image>
+    </a-image>
+
+    <a-sky src="#img1" id="sky" rotation="0 0 0" onclick="sonidoof()"></a-sky>
+
+    <a-entity rotation="0 180 0">
+      <a-camera>
+        <a-cursor fuse="true"></a-cursor>
+      </a-camera>
+    </a-entity>
+
+  </a-scene>
+
+  <script>
+    function imageClick(url) {
+      window.location = url;
+    }
+    function sonido(aud) {
+      var sonido_info = document.getElementById(aud);
+      sonido_info.play();
+      audof = aud;
+    }
+
+    function sonidoof() {
+      var sonido_info = document.getElementById(audof);
+      sonido_info.pause();
+    }
+
+    AFRAME.registerComponent('auto-enter-vr', {
+      init: function () {
+        var scene = this;
+        scene.el.addEventListener('loaded', function () {
+          setTimeout(function () {
+
+            console.log('Automatically entering VR...');
+            scene.el.sceneEl.enterVR();
+          }, 10);
+
+        });
+      }
+    });
+  </script>
+
+</body>
+
+</html>

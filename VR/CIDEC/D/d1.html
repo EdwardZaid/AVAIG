@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>AVAIG</title>
+  <meta charset="UTF-8" />
+  <script src="../../../aframe-master.min.js"></script>
+  <script src="../../../aframe-event-set-component.min.js"></script>
+
+</head>
+
+<body>
+  <audio id="mision1" src="../../../voz/mision1.mp3"></audio>
+  <audio id="vision1" src="../../../voz/vision1.mp3"></audio>
+  <audio id="mision2" src="../../../voz/mision2.mp3"></audio>
+  <audio id="vision2" src="../../../voz/vision2.mp3"></audio>
+
+  <a-scene auto-enter-vr>
+
+    <a-assets>
+      <img id="tr" src="../../../img-1/tr.png" />
+      <img id="img1" src="../../../img-1/d1.jpg" />
+      <img id="info" src="../../../img-1/inf.png" />
+      <img id="mis1" src="../../../img-1/mis1.jpg" />
+      <img id="vis1" src="../../../img-1/vis1.jpg" />
+      <img id="mis2" src="../../../img-1/mis2.jpg" />
+      <img id="vis2" src="../../../img-1/vis2.jpg" />
+    </a-assets>
+
+    <a-image src="#tr" alt="MDN" width="2" height="2" position="-0.5 -1 -8" rotation="-60 0 0"
+      onclick="imageClick('d2.html')"></a-image>
+    <a-image src="#tr" alt="MDN" width="3" height="3.5" position="-2 -2 10" rotation="85 -5 0"
+      onclick="imageClick('../general/14-r.html')"></a-image>
+
+    <a-image src="#info" alt="MDN" width="1" height="1" position="8 1.4 -5" rotation="0 90 0"
+      onclick="sonido('mision1')" event-set__enter="_event: mouseenter; _target: #TextInfo; visible: true; scale: 2 1 2"
+      event-set__leave="_event: mouseleave; _target: #TextInfo; visible: false; scale: 0 0 0">
+      <a-image src="#mis1" id="TextInfo" alt="MDN" width="5" height="2" visible="false" position="0 2 0" rotation="0 200 0" ></a-image>
+    </a-image>
+
+    <a-image src="#info" alt="MDN" width="1" height="1" position="8 1.4 8" rotation="0 90 0"
+    onclick="sonido('vision1')" event-set__enter="_event: mouseenter; _target: #TextInfo3; visible: true; scale: 2.5 1.5 2"
+    event-set__leave="_event: mouseleave; _target: #TextInfo3; visible: false; scale: 0 0 0">
+    <a-image src="#vis1" id="TextInfo3" alt="MDN" width="5" height="2" visible="false"  position="0 2 0" rotation="0 130 0"></a-image>
+  </a-image>
+
+    <a-image src="#info" alt="MDN" width="0.7" height="0.7" position="-5.5 1.4 4" rotation="0 90 0"
+      onclick="sonido('mision2')"
+      event-set__enter="_event: mouseenter; _target: #TextInfo1; visible: true; scale: 2 1 2"
+      event-set__leave="_event: mouseleave; _target: #TextInfo1; visible: false; scale: 0 0 0">
+      <a-image src="#mis2" id="TextInfo1" alt="MDN" width="5" height="2" visible="false" position="0 1.5 0" rotation="0 25 0"></a-image>
+    </a-image>
+
+    <a-image src="#info" alt="MDN" width="1" height="1" position="-7.5 1.4 -5" rotation="0 90 0"
+      onclick="sonido('vision2')" event-set__enter="_event: mouseenter; _target: #TextInfo2; visible: true; scale: 2 1 2"
+      event-set__leave="_event: mouseleave; _target: #TextInfo2; visible: false; scale: 0 0 0">
+      <a-image src="#vis2" id="TextInfo2" alt="MDN" width="5" height="2" visible="false" position="0 1.5 0" rotation="0 -30 -2"></a-image>
+    </a-image>
+
+    <a-sky src="#img1" id="sky" rotation="0 0 0" onclick="sonidoof()"></a-sky>
+
+    <a-camera>
+      <a-cursor fuse="true"></a-cursor>
+    </a-camera>
+
+
+  </a-scene>
+
+  <script>
+    function imageClick(url) {
+      window.location = url;
+    }
+
+    function sonido(aud) {
+      var sonido_info = document.getElementById(aud);
+      sonido_info.play();
+      audof = aud;
+    }
+
+    function sonidoof() {
+      var sonido_info = document.getElementById(audof);
+      sonido_info.pause();
+    }
+
+    AFRAME.registerComponent('auto-enter-vr', {
+      init: function () {
+        var scene = this;
+        scene.el.addEventListener('loaded', function () {
+          setTimeout(function () {
+
+            console.log('Automatically entering VR...');
+            scene.el.sceneEl.enterVR();
+          }, 10);
+
+        });
+      }
+    });
+  </script>
+
+</body>
+
+</html>
