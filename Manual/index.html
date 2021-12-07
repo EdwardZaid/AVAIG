@@ -9,17 +9,16 @@
   <script src="../aframe-mouse-cursor-component.min.js"></script>
 
 </head>
-<audio id="flecha" src="../voz/flecha.mp3"></audio>
-<audio id="flecha2" src="../voz/flecha2.mp3"></audio>
-<audio id="punto" src="../voz/punto.mp3"></audio>
+<audio id="flecha" src="../voz/flecha2.mp3"></audio>
+<audio id="punto" src="../voz/punto2.mp3"></audio>
 
 <body>
   <iframe src="../voz/silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
   <audio id="player" autoplay>
-    <source src="../voz/inicio.mp3" type="audio/mp3">
+    <source src="../voz/inicio2.mp3" type="audio/mp3">
   </audio>
 
-  <a-scene vr-mode-ui = "enabled: false">
+  <a-scene vr-mode-ui="enabled: false">
     <a-assets>
       <img id="tr" src="../img/tr.png" />
       <img id="img1" src="../img/1-1.jpg" />
@@ -45,11 +44,10 @@
       geometry="primitive: plane; width: 3" material="color: #333" visible="false" onclick="imageClick('menu.html')">
     </a-text>
 
-    <a-text id="vr" value="PRESIONA LOS OBJETOS EN PANTALLA" color="#FF0000" position="-3.5 0.2 -3"
-      scale="1.5 1.5 1.5">
+    <a-text id="vr" value="PRESIONA LOS OBJETOS EN PANTALLA" color="#FF0000" position="-3.5 0.2 -3" scale="1.5 1.5 1.5">
     </a-text>
 
-    <a-sky src="#img1" id="sky" rotation="0 0 0" onclick="sonidoof('flecha')"></a-sky>
+    <a-sky src="#img1" id="sky" rotation="0 0 0" onclick="sonidoof()"></a-sky>
 
     <a-entity camera position="0 1.6 0" look-controls mouse-cursor>
 
@@ -66,8 +64,8 @@
       audof = aud;
     }
 
-    function sonidoof(aud) {
-      var sonido_info = document.getElementById(aud);
+    function sonidoof() {
+      var sonido_info = document.getElementById(audof);
       sonido_info.pause();
     }
 
