@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>AVAIG</title>
+  <meta charset="UTF-8" />
+  <script src="../../../aframe.min.js"></script>
+  <script src="../../../aframe-event-set-component.min.js"></script>
+  <script src="../../../aframe-mouse-cursor-component.min.js"></script>
+
+</head>
+
+<body>
+  <a-scene vr-mode-ui = "enabled: false">
+
+    <a-assets>
+      <img id="tr" src="../../../img-1/tr.png" />
+      <img id="img1" src="../../../img-1/a24-2.jpg" />
+    </a-assets>
+
+    <a-image src="#tr" alt="MDN" width="2" height="2" position="-1 -1 -7" rotation="-70 0 0"
+      onclick="imageClick('7-2.html')"></a-image>
+    <a-image src="#tr" alt="MDN" width="3" height="3.5" position="-0.5 -2 8" rotation="85 5 0"
+      onclick="imageClick('a24-1-r.html')"></a-image>
+    <a-image src="#tr" alt="MDN" width="2.5" height="2.5" position="-5 -2 -5" rotation="-75 90 0"
+      onclick="imageClick('a33-1-r.html')"></a-image>
+
+
+    <a-sky src="#img1" id="sky" rotation="0 0 0"></a-sky> 
+
+   <a-entity camera position="0 1.6 0" look-controls mouse-cursor>
+
+  </a-scene>
+
+  <script>
+    function imageClick(url) {
+      window.location = url;
+    }
+ 
+  </script>
+
+</body>
+
+</html>
