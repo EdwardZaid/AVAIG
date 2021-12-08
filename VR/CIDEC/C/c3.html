@@ -22,19 +22,30 @@
     <a-image src="#tr" alt="MDN" width="2" height="2" position="-5 -2 3" rotation="70 -45 30"
       onclick="imageClick('c7.html')"></a-image>
 
-      <a-sky src="#img1" id="sky" rotation="0 0 0"></a-sky>
+    <a-sky src="#img1" id="sky" rotation="0 0 0"></a-sky>
 
-      <a-entity rotation="0 20 0">
-        <a-camera>
-          <a-cursor fuse="true"></a-cursor>
-        </a-camera>
-      </a-entity>
+    <a-entity rotation="0 0 0">
+      <a-camera>
+        <a-cursor fuse="true"></a-cursor>
+      </a-camera>
+    </a-entity>
 
   </a-scene>
 
   <script>
     function imageClick(url) {
       window.location = url;
+    }
+
+    function sonido(aud) {
+      var sonido_info = document.getElementById(aud);
+      sonido_info.play();
+      audof = aud;
+    }
+
+    function sonidoof() {
+      var sonido_info = document.getElementById(audof);
+      sonido_info.pause();
     }
 
     AFRAME.registerComponent('auto-enter-vr', {
