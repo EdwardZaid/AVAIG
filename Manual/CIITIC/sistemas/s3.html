@@ -4,9 +4,8 @@
 <head>
   <title>AVAIG</title>
   <meta charset="UTF-8" />
-  <script src="aframe.min.js"></script>
-  <script src="aframe-event-set-component.min.js"></script>
-  <script src="aframe-mouse-cursor-component.min.js"></script>
+  <script src="../../../aframe-master.min.js"></script>
+  <script src="../../../aframe-event-set-component.min.js"></script>
 
 </head>
 
@@ -14,7 +13,7 @@
   <audio id="aula5" src="../../../voz/aula5.mp3"></audio>
   <audio id="bamuj" src="../../../voz/bamuj.mp3"></audio>
 
-  <a-scene vr-mode-ui = "enabled: false">
+  <a-scene auto-enter-vr>
 
     <a-assets>
       <img id="tr" src="../../../img/tr.png" />
@@ -36,9 +35,9 @@
       <a-image src="#au5" id="TextInfo" alt="MDN" width="4" height="1.5" visible="false" position="0 -1 0"
         rotation="-0 180 -1.3"></a-image>
     </a-image>
-
+    
     <a-image src="#info" alt="MDN" width="1" height="1" position="-8 3.5 4.2" rotation="0 90 0" onclick="sonido('bamuj')" 
-      event-set__enter="_event: mouseenter; _target: #TextInfo2; visible: true; 1.5 1.3 1.5"
+      event-set__enter="_event: mouseenter; _target: #TextInfo2; visible: true; scale: 1.5 1.3 1.5"
       event-set__leave="_event: mouseleave; _target: #TextInfo2; visible: false; scale: 0 0 0">
       <a-image src="#ban" id="TextInfo2" alt="MDN" width="4" height="1.5" visible="false" position="0 -1 0"
         rotation="0 20 3"></a-image>
@@ -46,8 +45,9 @@
 
     <a-sky src="#img1" id="sky" rotation="0 0 0" onclick="sonidoof()"></a-sky>
 
-
-  <a-entity camera position="0 1.6 0" look-controls mouse-cursor>
+    <a-camera>
+      <a-cursor fuse="true"></a-cursor>
+    </a-camera>
 
 
   </a-scene>
@@ -68,6 +68,19 @@
       sonido_info.pause();
     }
 
+    AFRAME.registerComponent('auto-enter-vr', {
+      init: function () {
+        var scene = this;
+        scene.el.addEventListener('loaded', function () {
+          setTimeout(function () {
+
+            console.log('Automatically entering VR...');
+            scene.el.sceneEl.enterVR();
+          }, 10);
+
+        });
+      }
+    });
   </script>
 
 </body>
