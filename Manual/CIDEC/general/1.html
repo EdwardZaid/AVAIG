@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>AVAIG</title>
+  <meta charset="UTF-8" />
+  <script src="../../../aframe.min.js"></script>
+  <script src="../../../aframe-event-set-component.min.js"></script>
+  <script src="../../../aframe-mouse-cursor-component.min.js"></script>
+
+</head>
+
+<body>
+
+  <iframe src="silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
+
+  <audio id="player" autoplay>
+    <source src="../../../voz-1/2.mp3" type="audio/mp3">
+  </audio>
+  <a-scene vr-mode-ui = "enabled: false">
+
+    <a-assets>
+      <img id="tr" src="../../../img-1/tr.png" />
+      <img id="img2" src="../../../img-1/1.jpg" />
+    </a-assets>
+
+
+    <a-image src="#tr" alt="MDN" width="2" height="2" position="-0.5 -1 -10" rotation="-60 10 0"
+      onclick="imageClick('2.html')"></a-image>
+
+    <a-sky src="#img2" id="sky"></a-sky>
+
+ 
+  <a-entity camera position="0 1.6 0" look-controls mouse-cursor>
+
+  </a-scene>
+
+  <script>
+
+    function imageClick(url) {
+      window.location = url;
+    }
+
+
+  </script>
+
+</body>
+
+</html>
