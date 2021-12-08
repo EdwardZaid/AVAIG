@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>AVAIG</title>
+  <meta charset="UTF-8" />
+  <script src="../../../aframe.min.js"></script>
+  <script src="../../../aframe-event-set-component.min.js"></script>
+  <script src="../../../aframe-mouse-cursor-component.min.js"></script>
+  
+</head>
+
+<body>
+  <audio id="depgtv" src="../../../voz/depgtv.mp3"></audio>
+
+  <a-scene vr-mode-ui = "enabled: false">
+
+    <a-assets>
+      <img id="tr" src="../../../img-1/tr.png" />
+      <img id="img1" src="../../../img-1/c4.jpg" />
+      <img id="info" src="../../../img-1/inf2.png" />
+      <img id="dgtv" src="../../../img-1/titulos/DGTV.png" />
+    </a-assets>
+
+    <a-image src="#tr" alt="MDN" width="1.8" height="1.8" position="0 -2 -5" rotation="-70 0 0"
+      onclick="imageClick('c5.html')"></a-image>
+    <a-image src="#tr" alt="MDN" width="1.8" height="1.8" position="-4 -2 2" rotation="-70 90 0"
+      onclick="imageClick('c3-r.html')"></a-image>
+
+    <a-image src="#info" alt="MDN" width="1.3" height="1.3" position="-7.5 4 6" rotation="0 -20 10"
+      onclick="sonido('depgtv')"
+      event-set__enter="_event: mouseenter; _target: #TextInfo3; visible: true; scale: 3 6.5 3"
+      event-set__leave="_event: mouseleave; _target: #TextInfo3; visible: false; scale: 0 0 0">
+      <a-image src="#dgtv" id="TextInfo3" alt="MDN" width="4" height="1.5" visible="false" position="0 -1 -0.5"
+        rotation="10 150 7" scale="0 0 0"></a-image>
+    </a-image>
+
+    <a-sky src="#img1" id="sky" rotation="0 0 0"></a-sky>
+
+  <a-entity camera position="0 1.6 0" look-controls mouse-cursor>
+
+
+  </a-scene>
+
+  <script>
+    function imageClick(url) {
+      window.location = url;
+    }
+
+    function sonido(aud) {
+      var sonido_info = document.getElementById(aud);
+      sonido_info.play();
+      audof = aud;
+    }
+
+    function sonidoof() {
+      var sonido_info = document.getElementById(audof);
+      sonido_info.pause();
+    }
+
+  </script>
+
+</body>
+
+</html>

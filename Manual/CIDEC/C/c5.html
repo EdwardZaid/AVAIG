@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>AVAIG</title>
+  <meta charset="UTF-8" />
+  <script src="../../../aframe.min.js"></script>
+  <script src="../../../aframe-event-set-component.min.js"></script>
+  <script src="../../../aframe-mouse-cursor-component.min.js"></script>
+</head>
+
+<body>
+  <audio id="depm" src="../../../voz/DEP.mp3"></audio>
+
+  <a-scene vr-mode-ui = "enabled: false">
+
+    <a-assets>
+      <img id="tr" src="../../../img-1/tr.png" />
+      <img id="img1" src="../../../img-1/c5.jpg" />
+      <img id="info" src="../../../img-1/inf2.png" />
+      <img id="dep" src="../../../img/titulos/DEP.png" />
+    </a-assets>
+
+    <a-image src="#tr" alt="MDN" width="2" height="2" position="8 -2 0" rotation="-70 -90 0"
+      onclick="imageClick('c6.html')"></a-image>
+    <a-image src="#tr" alt="MDN" width="3" height="3.2" position="-1 -5 10" rotation="80 -5 0"
+      onclick="imageClick('c4-r.html')"></a-image>
+
+
+    <a-image src="#info" alt="MDN" width="1" height="1" position="-4 3.5 -8" rotation="0 0 0" onclick="sonido('depm')"
+      event-set__enter="_event: mouseenter; _target: #TextInfo4; visible: true; scale: 2.5 6 2.5"
+      event-set__leave="_event: mouseleave; _target: #TextInfo4; visible: false; scale: 0 0 0">
+      <a-image src="#dep" id="TextInfo4" alt="MDN" width="4" height="1.5" visible="false" position="0 -1 1"
+        rotation="10 30 0" scale="0 0 0"></a-image>
+    </a-image>
+
+    <a-image src="#info" alt="MDN" width="1" height="1" position="-6.5 5.3 3.6" rotation="0 90 0" onclick="sonido('depm')"
+      event-set__enter="_event: mouseenter; _target: #TextInfo3; visible: true; scale: 2.5 6 2"
+      event-set__leave="_event: mouseleave; _target: #TextInfo3; visible: false; scale: 0 0 0">
+      <a-image src="#dep" id="TextInfo3" alt="MDN" width="4" height="1.5" visible="false" position="0 -1 1"
+        rotation="10 30 0" scale="0 0 0"></a-image>
+    </a-image>
+
+    <a-sky src="#img1" id="sky" rotation="0 0 0" onclick="sonidoof()"></a-sky>
+
+  <a-entity camera position="0 1.6 0" look-controls mouse-cursor>
+
+  </a-scene>
+
+  <script>
+    function imageClick(url) {
+      window.location = url;
+    }
+
+    function sonido(aud) {
+      var sonido_info = document.getElementById(aud);
+      sonido_info.play();
+      audof = aud;
+    }
+
+    function sonidoof() {
+      var sonido_info = document.getElementById(audof);
+      sonido_info.pause();
+    }
+
+  </script>
+
+</body>
+
+</html>

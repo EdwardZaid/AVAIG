@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <title>AVAIG</title>
+  <meta charset="UTF-8" />
+  <script src="../../../aframe.min.js"></script>
+  <script src="../../../aframe-event-set-component.min.js"></script>
+  <script src="../../../aframe-mouse-cursor-component.min.js"></script>
+
+</head>
+
+<body>
+  <audio id="depse" src="../../../voz/depsres.mp3"></audio>
+  <audio id="deprf" src="../../../voz/DRF.mp3"></audio>
+  <audio id="desc" src="../../../voz/sers.mp3"></audio>
+  <audio id="plan" src="../../../voz/plan.mp3"></audio>
+  <audio id="depda" src="../../../voz/depda.mp3"></audio>
+  
+  <a-scene vr-mode-ui = "enabled: false">
+
+    <a-assets>
+      <img id="tr" src="../../../img-1/tr.png" />
+      <img id="img1" src="../../../img-1/c6.jpg" />
+      <img id="info" src="../../../img-1/inf.png" />
+      <img id="dse" src="../../../img/titulos/DSE.png" />
+      <img id="drf" src="../../../img/titulos/DRF.png" />
+      <img id="dsc" src="../../../img/titulos/SS.png" />
+      <img id="dppp" src="../../../img-1/titulos/DPPP.png" />
+      <img id="dda" src="../../../img/titulos/DDA.png" />
+    </a-assets>
+    <a-image src="#tr" alt="MDN" width="2" height="2" position="0 -2 -6" rotation="-70 0 0"
+      onclick="imageClick('c5-r.html')"></a-image>
+
+
+    <a-image src="#info" alt="MDN" width="1" height="1" position="8 6 8" rotation="0 0 0" onclick="sonido('depse')"
+      event-set__enter="_event: mouseenter; _target: #TextInfo4; visible: true; scale: 2.5 6 2.5"
+      event-set__leave="_event: mouseleave; _target: #TextInfo4; visible: false; scale: 0 0 0">
+      <a-image src="#dse" id="TextInfo4" alt="MDN" width="4" height="1.5" visible="false" position="-2 -1 -3"
+        rotation="10 220 0" scale="0 0 0"></a-image>
+    </a-image>
+
+    <a-image src="#info" alt="MDN" width="1" height="1" position="-4.5 6 8" rotation="0 0 0" onclick="sonido('plan')"
+      event-set__enter="_event: mouseenter; _target: #TextInfo5; visible: true; scale: 2.5 6 2.5"
+      event-set__leave="_event: mouseleave; _target: #TextInfo5; visible: false; scale: 0 0 0">
+      <a-image src="#dppp" id="TextInfo5" alt="MDN" width="4" height="1.5" visible="false" position="0 -1 -1"
+        rotation="10 160 0" scale="0 0 0"></a-image>
+    </a-image>
+    
+    <a-image src="#info" alt="MDN" width="1" height="1" position="-8 4 -4.7" rotation="0 90 0" onclick="sonido('depda')"
+      event-set__enter="_event: mouseenter; _target: #TextInfo3; visible: true; scale: 2.5 6 2.5"
+      event-set__leave="_event: mouseleave; _target: #TextInfo3; visible: false; scale: 0 0 0">
+      <a-image src="#dda" id="TextInfo3" alt="MDN" width="4" height="1.5" visible="false" position="-1 -1 0"
+        rotation="10 -30 0" scale="0 0 0"></a-image>
+    </a-image>
+
+    <a-image src="#info" alt="MDN" width="1" height="1" position="8 5 -5.5" rotation="0 90 0" onclick="sonido('desc')"
+      event-set__enter="_event: mouseenter; _target: #TextInfo1; visible: true; scale: 2 4 2"
+      event-set__leave="_event: mouseleave; _target: #TextInfo1; visible: false; scale: 0 0 0">
+      <a-image src="#dsc" id="TextInfo1" alt="MDN" width="4" height="1.5" visible="false" position="0 -1 -1"
+        rotation="10 200 3" scale="0 0 0"></a-image>
+    </a-image>
+
+    <a-image src="#info" alt="MDN" width="1" height="1" position="8 5 4.5" rotation="0 90 0" onclick="sonido('deprf')"
+      event-set__enter="_event: mouseenter; _target: #TextInfo; visible: true; scale: 2.5 6 2.5"
+      event-set__leave="_event: mouseleave; _target: #TextInfo; visible: false; scale: 0 0 0">
+      <a-image src="#drf" id="TextInfo" alt="MDN" width="4" height="1.5" visible="false" position="0 -1 -1"
+        rotation="10 160 0" scale="0 0 0"></a-image>
+    </a-image>
+
+    <a-sky src="#img1" id="sky" rotation="0 0 0" onclick="sonidoof()"></a-sky>
+
+  <a-entity camera position="0 1.6 0" look-controls mouse-cursor>
+
+
+  </a-scene>
+
+  <script>
+    function imageClick(url) {
+      window.location = url;
+    }
+
+    function sonido(aud) {
+      var sonido_info = document.getElementById(aud);
+      sonido_info.play();
+      audof = aud;
+    }
+
+    function sonidoof() {
+      var sonido_info = document.getElementById(audof);
+      sonido_info.pause();
+    }
+
+  </script>
+
+</body>
+
+</html>
