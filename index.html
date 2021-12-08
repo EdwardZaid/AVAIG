@@ -29,11 +29,11 @@
     </a-assets>
 
     <a-image src="#tr" id="fle" alt="MDN" width="2" height="2" position="-5 -0.5 -10" rotation="-50 10 0"
-      event-set__enter="_event: mouseenter; _target: #vr; visible: false "  onclick="sonido('flecha')" 
-      event-set__leave="_event: mouseleave; _target: #inf; visible: true; scale: 1 1 1" onclick="sonidoof()" ></a-image>
+      event-set__enter="_event: mouseenter; _target: #vr; visible: false " onclick="sonido('flecha')"
+      event-set__leave="_event: mouseleave; _target: #inf; visible: true; scale: 1 1 1" onclick="sonidoof()"></a-image>
 
     <a-image src="#info" id="inf" alt="MDN" width="1.2" height="1.2" position="-0.3 3.5 -9" rotation="0 0 0"
-      visible="false" scale="0 0 0" 
+      visible="false" scale="0 0 0"
       event-set__enter="_event: mouseenter; _target: #TextInfo; visible: true; scale: 3 3 3" onclick="sonido('punto')"
       event-set__leave="_event: mouseleave; _target: #ini; visible: true; scale: 1.5 1.5 1.5" onclick="sonidoof()">
 
@@ -60,6 +60,7 @@
   </a-scene>
 
   <script>
+    audof = "";
     function imageClick(url) {
       window.location = url;
     }
